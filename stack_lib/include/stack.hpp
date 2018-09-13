@@ -24,7 +24,7 @@ class Stack {
     stack_amount = 0;
     stack_max_size = 0;
   }
-  bool SetSize();
+  bool SetSize(int size);
   int Size();
   bool IsFull();
   bool IsEmpty();
