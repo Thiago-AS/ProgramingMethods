@@ -1,6 +1,6 @@
 IDIR =../include
 CC=g++
-CFLAGS=-I$(IDIR)
+CFLAGS=-I$(IDIR) -ftest-coverage -fprofile-arcs
 
 ODIR=obj
 LDIR =../lib
@@ -10,7 +10,7 @@ LIBS=-lm
 _DEPS = stack.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = stack_vector.o main.o
+_OBJ = stack_linkedlist.o main.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.cpp $(DEPS)

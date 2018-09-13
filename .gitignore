@@ -1,3 +1,6 @@
+stack_test
+stack_lib/src/obj
+stack_lib/doxygen
 # Prerequisites
 *.d
 
