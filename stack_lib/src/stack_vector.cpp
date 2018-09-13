@@ -3,17 +3,11 @@
 
 void Stack::CreateStack() {
   stack_header = new StackHeader;
-  stack_header->stack_top = NULL;
   stack_header->stack_amount = 0;
   stack_header->stack_max_size = 0;
 }
 
 void Stack::DestroyStack() {
-  while (stack_header->stack_top != NULL) {
-    StackNode* node = stack_header->stack_top;
-    stack_header->stack_top = stack_header->stack_top->next_node;
-    delete node;
-  }
   delete stack_header;
 }
 
@@ -25,7 +19,7 @@ bool Stack::IsFull() {
 }
 
 bool Stack::IsEmpty() {
-  if (stack_header->stack_amount == 0 && stack_header->stack_top == NULL)
+  if (stack_header->stack_amount == 0)
     return true;
   else
     return false;
@@ -34,6 +28,7 @@ bool Stack::IsEmpty() {
 bool Stack::SetSize(int size) {
   if (size >= 0) {
     stack_header->stack_max_size = size;
+    stack_header->stack_vector.reserve(stack_header->stack_max_size);
     return true;
   } else {
     return false;
@@ -49,11 +44,7 @@ bool Stack::Push(ITEM_TYPE data) {
     std::cout << "Stack is full" << std::endl;
     return false;
   } else {
-    StackNode* new_node = new StackNode;
-    new_node->data = data;
-    new_node->next_node = stack_header->stack_top;
-    stack_header->stack_top = new_node;
-    stack_header->stack_amount++;
+    stack_header->stack_vector[stack_header->stack_amount++] = data;
     return true;
   }
 }
@@ -63,13 +54,10 @@ ITEM_TYPE Stack::Pop() {
     std::cout << "Stack is empty" << std::endl;
     return false;
   } else {
-    ITEM_TYPE node_data;
-    StackNode* old_node = stack_header->stack_top;
-    node_data = stack_header->stack_top->data;
-    stack_header->stack_top = stack_header->stack_top->next_node;
+    ITEM_TYPE data;
     stack_header->stack_amount--;
-    delete old_node;
-    return node_data;
+    data = stack_header->stack_vector[stack_header->stack_amount];
+    return data;
   }
 }
 
@@ -78,6 +66,6 @@ ITEM_TYPE Stack::Top() {
     std::cout << "Stack is empty" << std::endl;
     return false;
   } else {
-    return stack_header->stack_top->data;
+    return stack_header->stack_vector[stack_header->stack_amount - 1];
   }
 }
