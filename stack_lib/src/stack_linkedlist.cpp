@@ -61,7 +61,6 @@ bool Stack::Push(ITEM_TYPE data) {
 ITEM_TYPE Stack::Pop() {
   if (IsEmpty()) {
     std::cout << "Stack is empty" << std::endl;
-    return false;
   } else {
     ITEM_TYPE node_data;
     StackNode* old_node = stack_header->stack_top;
@@ -76,7 +75,6 @@ ITEM_TYPE Stack::Pop() {
 ITEM_TYPE Stack::Top() {
   if (IsEmpty()) {
     std::cout << "Stack is empty" << std::endl;
-    return false;
   } else {
     return stack_header->stack_top->data;
   }

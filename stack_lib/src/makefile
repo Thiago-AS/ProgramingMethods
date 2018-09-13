@@ -10,7 +10,7 @@ LIBS=-lm
 _DEPS = stack.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = stack.o main.o
+_OBJ = stack_vector.o main.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.cpp $(DEPS)
