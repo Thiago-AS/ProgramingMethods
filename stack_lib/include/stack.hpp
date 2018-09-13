@@ -24,13 +24,13 @@ class Stack {
     stack_amount = 0;
     stack_max_size = 0;
   }
-  bool SetSize(int size);
-  int Size();
   bool IsFull();
   bool IsEmpty();
-  bool Push(ITEM_TYPE value);
+  bool SetSize(int size);
+  int Size();
+  bool Push(ITEM_TYPE data);
   ITEM_TYPE Pop();
-  bool Top();
+  ITEM_TYPE Top();
 };
 
 #endif  // STACK_LIB_INCLUDE_STACK_HPP_
