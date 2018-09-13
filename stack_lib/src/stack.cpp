@@ -1,14 +1,31 @@
+// Copyright
 #include "stack.hpp"
 
+void Stack::CreateStack() {
+  stack_header = new StackHeader;
+  stack_header->stack_top = NULL;
+  stack_header->stack_amount = 0;
+  stack_header->stack_max_size = 0;
+}
+
+void Stack::DestroyStack() {
+  while (stack_header->stack_top != NULL) {
+    StackNode* node = stack_header->stack_top;
+    stack_header->stack_top = stack_header->stack_top->next_node;
+    delete node;
+  }
+  delete stack_header;
+}
+
 bool Stack::IsFull() {
-  if (stack_amount == stack_max_size)
+  if (stack_header->stack_amount == stack_header->stack_max_size)
     return true;
   else
     return false;
 }
 
 bool Stack::IsEmpty() {
-  if (stack_amount == 0 && stack_top == NULL)
+  if (stack_header->stack_amount == 0 && stack_header->stack_top == NULL)
     return true;
   else
     return false;
@@ -16,7 +33,7 @@ bool Stack::IsEmpty() {
 
 bool Stack::SetSize(int size) {
   if (size >= 0) {
-    stack_max_size = size;
+    stack_header->stack_max_size = size;
     return true;
   } else {
     return false;
@@ -24,7 +41,7 @@ bool Stack::SetSize(int size) {
 }
 
 int Stack::Size() {
-  return stack_max_size;
+  return stack_header->stack_max_size;
 }
 
 bool Stack::Push(ITEM_TYPE data) {
@@ -34,9 +51,9 @@ bool Stack::Push(ITEM_TYPE data) {
   } else {
     StackNode* new_node = new StackNode;
     new_node->data = data;
-    new_node->next_node = stack_top;
-    stack_top = new_node;
-    stack_amount++;
+    new_node->next_node = stack_header->stack_top;
+    stack_header->stack_top = new_node;
+    stack_header->stack_amount++;
     return true;
   }
 }
@@ -47,10 +64,10 @@ ITEM_TYPE Stack::Pop() {
     return false;
   } else {
     ITEM_TYPE node_data;
-    StackNode* old_node = stack_top;
-    node_data = stack_top->data;
-    stack_top = stack_top->next_node;
-    stack_amount--;
+    StackNode* old_node = stack_header->stack_top;
+    node_data = stack_header->stack_top->data;
+    stack_header->stack_top = stack_header->stack_top->next_node;
+    stack_header->stack_amount--;
     delete old_node;
     return node_data;
   }
@@ -61,6 +78,6 @@ ITEM_TYPE Stack::Top() {
     std::cout << "Stack is empty" << std::endl;
     return false;
   } else {
-    return stack_top->data;
+    return stack_header->stack_top->data;
   }
 }
