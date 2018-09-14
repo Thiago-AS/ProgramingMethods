@@ -1,3 +1,4 @@
+STACK_CHOICE=stack_linkedlist
 IDIR =../include
 CC=g++
 CFLAGS=-I$(IDIR) -ftest-coverage -fprofile-arcs
@@ -10,7 +11,7 @@ LIBS=-lm
 _DEPS = stack.hpp catch.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = stack_vector.o test_stack.o
+_OBJ = $(STACK_CHOICE).o test_stack.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.cpp $(DEPS)
@@ -22,4 +23,4 @@ stack_test: $(OBJ)
 .PHONY: clean
 
 clean:
-	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~
+	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ $(ODIR)/*.gcno *~ $(ODIR)/*.gcda *~

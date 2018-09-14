@@ -26,22 +26,30 @@ typedef struct StackNode {
   struct StackNode* next_node; /**< Ponteiro para o próximo elemento da pilha.*/
 } StackNode;
 
-/** @brief Define o cabeçalho da pilha.
+/** @brief Define o cabeçalho da pilha em lista encadeada.
  *
  *  Struct que representa o cabeçalho da pilha, contendo sempre o topo da pilha,
  *  a quantidade de elementos e o tamanho máximo da pilha.
  */
+// CASO FOR UTILIZAR A PILHA EM VECTOR, COMENTAR ESTE BLOCO. E VICE VERSA
 typedef struct StackHeader {
   StackNode* stack_top; /**< Ponteiro apontando para o topo da pilha*/
   int stack_amount; /**< Guarda a quantidade de elementos armazenados na pilha*/
   int stack_max_size; /**< Guarda a quantidade máxima de elementos da pilha*/
 } StackHeader;
 
+/** @brief Define o cabeçalho da pilha em vetor.
+ *
+ *  Struct que representa o cabeçalho da pilha, contendo a estrutura vector, a
+ *  quantidade de elementos e o tamanho máximo da pilha.
+ */
+/* CASO FOR UTILIZAR A PILHA EM VECTOR, COMENTAR ESTE BLOCO. E VICE VERSA
 typedef struct StackHeader {
   std::vector<ITEM_TYPE> stack_vector;
   int stack_amount;
   int stack_max_size;
 } StackHeader;
+*/
 
 /**
  *  @brief Classe que mantem as estruturas e métodos para a implementar uma
