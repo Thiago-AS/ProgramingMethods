@@ -11,6 +11,7 @@
 #include<iostream>
 #include<vector>
 #include<string>
+#include<stdexcept>
 
 /**Macro que define o tipo de dado a ser utilizado pela pilha.*/
 #define ITEM_TYPE int
@@ -36,11 +37,11 @@ typedef struct StackHeader {
   int stack_max_size; /**< Guarda a quantidade máxima de elementos da pilha*/
 } StackHeader;
 
-// typedef struct StackHeader {
-//   std::vector<ITEM_TYPE> stack_vector;
-//   int stack_amount;
-//   int stack_max_size;
-// } StackHeader;
+typedef struct StackHeader {
+  std::vector<ITEM_TYPE> stack_vector;
+  int stack_amount;
+  int stack_max_size;
+} StackHeader;
 
 /**
  *  @brief Classe que mantem as estruturas e métodos para a implementar uma
@@ -79,10 +80,14 @@ class Stack {
    *  @return Retorna verdadeiro para operação bem sucedida, ou falso caso falha.
    */
   bool SetSize(int size);
-  /** @brief Retorna o tamanho máximo da pilha.
+  /** @brief Mostra o tamanho máximo da pilha.
    *  @return Retorna o valor do tamanho máximo da pilha.
    */
   int Size();
+  /** @brief Mostra a quantidade de elementos.
+   *  @return Retorna a quantidade de elementos na pilha.
+   */
+  int Amount();
   /** @brief Adiciona elemento ao topo pilha.
    *  @param data Conteúdo a ser inserido na pilha.
    *  @return Retorna verdadeiro para operação bem sucedida, ou falso caso falha.

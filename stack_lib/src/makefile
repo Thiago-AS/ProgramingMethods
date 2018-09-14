@@ -7,17 +7,17 @@ LDIR =../lib
 
 LIBS=-lm
 
-_DEPS = stack.hpp
+_DEPS = stack.hpp catch.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = stack_linkedlist.o main.o
+_OBJ = stack_vector.o test_stack.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 stack_test: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+	$(CC) -std=c++11 -o $@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean
 

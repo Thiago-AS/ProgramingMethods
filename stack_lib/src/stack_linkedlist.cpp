@@ -70,6 +70,13 @@ int Stack::Size() {
 }
 
 /**
+ *  LinkedList: Retorna o valor da quantidade de elementos da pilha.
+ */
+int Stack::Amount() {
+  return stack_header->stack_amount;
+}
+
+/**
  *  LinkedList: Verifica se a pilha está cheia, caso esteja, retorna falso sem
  *  realizar nenhuma operação. Caso ainda tenha espaço, cria-se um novo elemento
  *  definindo seu conteudo como o parametro data fornecido, e apontado seu antecessor
@@ -100,7 +107,7 @@ bool Stack::Push(ITEM_TYPE data) {
  */
 ITEM_TYPE Stack::Pop() {
   if (IsEmpty()) {
-    std::cout << "Stack is empty" << std::endl;
+    throw std::out_of_range("Stack is empty");
   } else {
     ITEM_TYPE node_data;
     StackNode* old_node = stack_header->stack_top;
@@ -119,7 +126,7 @@ ITEM_TYPE Stack::Pop() {
  */
 ITEM_TYPE Stack::Top() {
   if (IsEmpty()) {
-    std::cout << "Stack is empty" << std::endl;
+    throw std::out_of_range("Stack is empty");
   } else {
     return stack_header->stack_top->data;
   }
