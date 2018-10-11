@@ -11,10 +11,8 @@
 using namespace std;
 
 class FileHandler {
- private:
-  ifstream file;
-
  public:
+  ifstream file;
   bool SetFile(string file_name);
 };
 

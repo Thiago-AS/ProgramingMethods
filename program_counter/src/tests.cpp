@@ -11,8 +11,19 @@ TEST_CASE("Alocar classe FileHandler") {
   REQUIRE(file_handler != nullptr);
 
   SECTION("Definir arquivo no atributo de classe") {
-    bool set_correctly;
+    bool set_correctly = false;
     set_correctly = file_handler->SetFile("sample_file.cpp");
     REQUIRE(set_correctly == true);
+
+    SECTION("Contar quantidade de linhas total do arquivo") {
+      int file_lines = 0;
+      try {
+        file_lines = file_handler->GetFileLines();
+        REQUIRE(file_lines != 0);
+        REQUIRE(file_lines == 27);
+      } catch(const std::exception& e) {
+        REQUIRE(file_handler->file.isopen() == false);
+      }
+    }
   }
 }
