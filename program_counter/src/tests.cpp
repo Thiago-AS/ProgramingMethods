@@ -1,5 +1,7 @@
-/**
- *  @copyright
+/** @file tests.cpp
+ *  @brief Contem os tests definidos a serem utilizados.
+ *
+ *  @copyright 2018 Thiago Araujo da Silva 15/0149832
  */
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"

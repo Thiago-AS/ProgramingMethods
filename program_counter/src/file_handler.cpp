@@ -1,9 +1,20 @@
-/**
- *  @copyright
+/** @file file_handler.cpp
+ *  @brief Contem as implementações de classes, atributos e metodos utilizados.
+ *
+ *  @copyright 2018 Thiago Araujo da Silva 15/0149832
  */
-
 #include "../include/file_handler.h"
 
+/** Abre o arquivo de nome passado pelo parametro. Caso arquivo seja aberto
+ *  corretamente, retorna verdadeiro, caso contrario falso.
+ *
+ *  Assertiva de entrada:
+ *    - parametro deve ser um string.
+ *    - tamanho da string deve ser mairo que zero.
+ *
+ *  Assertiva de saida:
+ *    - resposta correta em função do sucesso da operação.
+ */
 bool FileHandler::SetFile(string file_name) {
   this->file.open(file_name);
   if (this->file.is_open())
@@ -12,6 +23,17 @@ bool FileHandler::SetFile(string file_name) {
     return false;
 }
 
+/** Calcula o total de linhas do arquivo, ao fazer uma iteração sobre todas
+ *  estas ate atingir o final do arquivo (EOF). Apos todas as operações,
+ *  retorna o ponteiro do arquivo para o ponto de começo.
+ *
+ *  Assertiva de entrada:
+ *    - arquivo precisa ja estar aberto.
+ *
+ *  Assertiva de saida:
+ *    - ponteiro arquivo precisa estar no começo.
+ *    - valor da quantidade de linhas ser maior que zero.
+ */
 int FileHandler::GetFileLines() {
   if (this->file.is_open()) {
     string line;
@@ -27,6 +49,23 @@ int FileHandler::GetFileLines() {
   }
 }
 
+/** Calcula o total de linhas invalidas (comentadas ou em branco). Itera sobre
+ *  as linhas procurando por um caractere //, /*.
+ *  Caso encontre ambos, verifica sua ordem e realiza operação.
+ *  Caso encontre //, verifica se esta no começo da linha, caso esteja
+ *  contabiliza como linha invalida.
+ *  Caso encontre /*, procura pelo fechamento, enquanto nao encontra, soma
+ *  as linhas entre tais pontos como linha invalida.
+ *  Caso nao encontre comentarios // ou /*, porem a linha e vazia, contabiliza
+ *  como linha invalida.
+ *
+ *  Assertiva de entrada:
+ *    - arquivo precisa ja estar aberto.
+ *
+ *  Assertiva de saida:
+ *    - ponteiro arquivo precisa estar no começo.
+ *    - valor da quantidade de linhas ser maior que zero.
+ */
 int FileHandler::GetInvalidLines() {
   if (this->file.is_open()) {
     string line;
@@ -88,6 +127,15 @@ int FileHandler::GetInvalidLines() {
   }
 }
 
+/** Contabiliza a quantidade de linhas validas, subtraindo a quantidade de
+ *  linhas total e a quantidade de linhas invalidas.
+ *
+ *  Assertiva de entrada:
+ *    - arquivo deve estar aberto
+ *
+ *  Assertiva de saida:
+ *    - valor de linhas maior que zero.
+ */
 int FileHandler::GetValidLines() {
   if (this->file.is_open()) {
     int amount_valid_lines = 0;
@@ -98,6 +146,15 @@ int FileHandler::GetValidLines() {
   }
 }
 
+/** Fecha o arquivo previamente aberto.
+ *
+ *  Assertiva de entrada:
+ *    - arquivo deve estar aberto
+ *
+ *  Assertiva de saida:
+ *    - caso arquivo aberto, operação com sucesso
+ *    - resposta correta em função do sucesso da operação.
+ */
 bool FileHandler::CloseFile() {
   if (this->file.is_open()) {
     this->file.close();
