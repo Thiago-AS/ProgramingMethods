@@ -18,6 +18,7 @@ class FileHandler {
   bool SetFile(string file_name);
   int GetFileLines();
   int GetInvalidLines();
+  int GetValidLines();
 };
 
 #endif  // PROGRAM_COUNTER_INCLUDE_FILE_HANDLER_H_

@@ -87,3 +87,13 @@ int FileHandler::GetInvalidLines() {
     throw "File not open";
   }
 }
+
+int FileHandler::GetValidLines() {
+  if (this->file.is_open()) {
+    int amount_valid_lines = 0;
+    amount_valid_lines = GetFileLines() - GetInvalidLines();
+    return amount_valid_lines;
+  } else {
+    throw "File not open";
+  }
+}
