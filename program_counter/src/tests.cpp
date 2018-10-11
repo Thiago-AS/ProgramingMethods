@@ -6,7 +6,7 @@
 #include "../include/file_handler.h"
 
 TEST_CASE("Alocar classe FileHandler") {
-  FileHandler file_handler = nullptr;
+  FileHandler* file_handler = nullptr;
   file_handler = new FileHandler;
   REQUIRE(file_handler != nullptr);
 }
