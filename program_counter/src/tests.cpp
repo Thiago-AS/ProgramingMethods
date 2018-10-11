@@ -45,5 +45,12 @@ TEST_CASE("Alocar classe FileHandler") {
         }
       }
     }
+
+    SECTION("Fechar arquivo") {
+      bool close_correctly = false;
+      close_correctly = file_handler->CloseFile();
+      REQUIRE(close_correctly == true);
+    }
   }
+  del file_handler;
 }
