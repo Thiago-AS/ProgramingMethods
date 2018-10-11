@@ -7,16 +7,16 @@ LDIR =../lib
 
 LIBS=-lm
 
-_DEPS = catch.hpp
+_DEPS = file_handler.h catch.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = test.o
+_OBJ = file_handler.o tests.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-stack_test: $(OBJ)
+program_counter: $(OBJ)
 	$(CC) -std=c++11 -o $@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean
