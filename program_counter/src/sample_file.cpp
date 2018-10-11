@@ -20,7 +20,7 @@ void Stack::CreateStack() {
 void Stack::DestroyStack() {
   while (stack_header->stack_top != NULL) {
     StackNode* node = stack_header->stack_top;
-    stack_header->stack_top = stack_header->stack_top->next_node;
+    stack_header->stack_top = stack_header->stack_top->next_node;  // comment
     delete node;
   }
   delete stack_header;

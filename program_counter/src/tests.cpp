@@ -29,7 +29,7 @@ TEST_CASE("Alocar classe FileHandler") {
         int invalid_lines = 0;
         try {
           invalid_lines = file_handler->GetInvalidLines();
-          REQUIRE(invalid_lines == 14);
+          REQUIRE(invalid_lines == 12);
         } catch(const char* error) {
           REQUIRE(file_handler->file.is_open() == false);
         }
