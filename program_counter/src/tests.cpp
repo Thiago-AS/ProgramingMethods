@@ -33,6 +33,16 @@ TEST_CASE("Alocar classe FileHandler") {
         } catch(const char* error) {
           REQUIRE(file_handler->file.is_open() == false);
         }
+
+        SECTION("Contar quantidade de linhas de codigo") {
+          try {
+            int valid_lines = 0;
+            valid_lines = file_handler->GetValidLines();
+            REQUIRE(valid_lines == 15);
+          } catch(const char* error) {
+            REQUIRE(file_handler->file.is_open() == false);
+          }
+        }
       }
     }
   }
