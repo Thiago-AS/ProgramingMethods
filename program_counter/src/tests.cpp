@@ -12,7 +12,7 @@ TEST_CASE("Alocar classe FileHandler") {
 
   SECTION("Definir arquivo no atributo de classe") {
     bool set_correctly;
-    file_handler->SetFile("sample_file.cpp");
+    set_correctly = file_handler->SetFile("sample_file.cpp");
     REQUIRE(set_correctly == true);
   }
 }
