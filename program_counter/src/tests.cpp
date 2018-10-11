@@ -21,8 +21,8 @@ TEST_CASE("Alocar classe FileHandler") {
         file_lines = file_handler->GetFileLines();
         REQUIRE(file_lines != 0);
         REQUIRE(file_lines == 27);
-      } catch(const std::exception& e) {
-        REQUIRE(file_handler->file.isopen() == false);
+      } catch(const char* error) {
+        REQUIRE(file_handler->file.is_open() == false);
       }
     }
   }
