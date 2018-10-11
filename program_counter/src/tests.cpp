@@ -22,7 +22,7 @@ TEST_CASE("Alocar classe FileHandler") {
       try {
         file_lines = file_handler->GetFileLines();
         REQUIRE(file_lines != 0);
-        REQUIRE(file_lines == 27);
+        REQUIRE(file_lines == 30);
       } catch(const char* error) {
         REQUIRE(file_handler->file.is_open() == false);
       }
@@ -31,7 +31,7 @@ TEST_CASE("Alocar classe FileHandler") {
         int invalid_lines = 0;
         try {
           invalid_lines = file_handler->GetInvalidLines();
-          REQUIRE(invalid_lines == 12);
+          REQUIRE(invalid_lines == 15);
         } catch(const char* error) {
           REQUIRE(file_handler->file.is_open() == false);
         }
