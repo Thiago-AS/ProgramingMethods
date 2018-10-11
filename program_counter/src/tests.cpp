@@ -24,6 +24,16 @@ TEST_CASE("Alocar classe FileHandler") {
       } catch(const char* error) {
         REQUIRE(file_handler->file.is_open() == false);
       }
+
+      SECTION("Contar quantidade de linhas comentadas ou em branco") {
+        int invalid_lines = 0;
+        try {
+          invalid_lines = file_handler->GetInvalidLines();
+          REQUIRE(invalid_lines == 14);
+        } catch(const char* error) {
+          REQUIRE(file_handler->file.is_open() == false);
+        }
+      }
     }
   }
 }

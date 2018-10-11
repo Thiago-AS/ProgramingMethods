@@ -11,7 +11,7 @@ void Stack::CreateStack() {
   stack_header->stack_amount = 0;
   stack_header->stack_max_size = 0;
 }
-
+// Comentario teste
 /**
  *  LinkedList: Itera-se sobre a pilha desalocando todos os elementos restantes da
  *  pilha, até que esta esteja vazia, após remover os elementos, remove-se o
