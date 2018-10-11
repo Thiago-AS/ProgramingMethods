@@ -19,6 +19,7 @@ class FileHandler {
   int GetFileLines();
   int GetInvalidLines();
   int GetValidLines();
+  bool CloseFile();
 };
 
 #endif  // PROGRAM_COUNTER_INCLUDE_FILE_HANDLER_H_

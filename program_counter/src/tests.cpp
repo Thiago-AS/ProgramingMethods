@@ -52,5 +52,5 @@ TEST_CASE("Alocar classe FileHandler") {
       REQUIRE(close_correctly == true);
     }
   }
-  del file_handler;
+  delete file_handler;
 }

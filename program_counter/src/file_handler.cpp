@@ -23,7 +23,7 @@ int FileHandler::GetFileLines() {
     this->file.seekg(0, ios::beg);
     return amount_lines;
   } else {
-    throw "File not open";
+    throw "File is not open";
   }
 }
 
@@ -84,7 +84,7 @@ int FileHandler::GetInvalidLines() {
     this->file.seekg(0, ios::beg);
     return amount_invalid_lines;
   } else {
-    throw "File not open";
+    throw "File is not open";
   }
 }
 
@@ -94,6 +94,18 @@ int FileHandler::GetValidLines() {
     amount_valid_lines = GetFileLines() - GetInvalidLines();
     return amount_valid_lines;
   } else {
-    throw "File not open";
+    throw "File is not open";
+  }
+}
+
+bool FileHandler::CloseFile() {
+  if (this->file.is_open()) {
+    this->file.close();
+    if (this->file.is_open())
+      return false;
+    else
+      return true;
+  } else {
+    return false;
   }
 }
